@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>2SMR AI</title>
+
+    <link rel="stylesheet" href="/web/style.css">
+     <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD5N8VaYqwRuWAS92dXWDukP1m-5j1BT3o",
+    authDomain: "smr-ai.firebaseapp.com",
+    projectId: "smr-ai",
+    storageBucket: "smr-ai.firebasestorage.app",
+    messagingSenderId: "291107228942",
+    appId: "1:291107228942:web:12520330c5e419d1b21b5f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window.auth = getAuth(app);
+  window.db = getFirestore(app);
+
+  console.log("Firebase inicializado correctamente en 2SMR AI");
+</script>
+</head>
+
+<body>
+
+    <aside class="sidebar" style="display: flex; flex-direction: column; justify-content: space-between; height: 100vh;">
+    <div>
+      <h2>2SMR AI</h2>
+      <button id="new-chat">+ Nuevo chat</button>
+    </div>
+
+<div id="chat-history" class="chat-history-list"></div>
+
+    <div style="padding: 10px; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px;">
+      <div id="auth-logged-out">
+        <button id="btn-login-main" style="width: 100%; padding: 10px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
+          Iniciar Sesión
+        </button>
+      </div>
+
+      <div id="auth-logged-in" style="display: none;">
+        <p style="font-size: 12px; margin: 0 0 4px 0; color: #a1a1aa;">Conectado como:</p>
+        <p id="user-email-display" style="font-size: 13px; font-weight: bold; margin: 0 0 8px 0; word-break: break-all; color: #fff;"></p>
+        <button id="btn-logout" style="width: 100%; padding: 6px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Cerrar Sesión</button>
+      </div>
+
+      <div class="sidebar-info" style="margin-top: 10px; font-size: 12px; color: #71717a; text-align: center;">
+        Tu jefe máximo
+      </div>
+    </div>
+  </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <span>2SMR AI</span>
+            <span class="badge">Especialista en SMR</span>
+        </header>
+
+        <section id="chat" class="chat">
+
+            <div class="welcome" id="welcome">
+                <h1>¿Que te cuentas?</h1>
+                <p>Tu asistente de Sistemas Microinformáticos y Redes.</p>
+
+                <div class="suggestions">
+                    <button class="suggestion">
+                        Explícame las VLAN
+                    </button>
+
+                    <button class="suggestion">
+                        Ayúdame con Windows Server
+                    </button>
+
+                    <button class="suggestion">
+                        Enséñame Linux
+                    </button>
+
+                    <button class="suggestion">
+                        Prepárame un examen de redes
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="composer">
+            <form id="form">
+
+                <textarea
+                    id="message"
+                    placeholder="Pregunta lo que quieras sobre SMR..."
+                    rows="1"
+                    required
+                ></textarea>
+
+                <button id="send" type="submit">↑</button>
+
+            </form>
+
+            <p class="disclaimer">
+                2SMR AI jamas puede cometer errores. Comprueba la información.
+            </p>
+        </div>
+
+    </main>
+     <script type="module" src="/web/script.js"></script>
+</body>
+</html>
